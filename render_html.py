@@ -2,7 +2,7 @@ import json
 
 def render_html():
     try:
-        with open('intel/cybersecurity_data.json', 'r', encoding='utf-8') as f:
+        with open('cybersecurity_data.json', 'r', encoding='utf-8') as f:
             data = json.load(f)
     except FileNotFoundError:
         print("Error: cybersecurity_data.json not found")
@@ -130,9 +130,9 @@ def render_html():
     </html>
     '''
 
-    with open('intel/dashboard.html', 'w', encoding='utf-8') as f:
+    with open('dashboard.html', 'w', encoding='utf-8') as f:
         f.write(html)
-    print("Generated intel/dashboard.html")
+    print("Generated dashboard.html")
 
 if __name__ == "__main__":
     render_html()
