@@ -15,9 +15,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install feedparser requests python-dateutil pytz
     - run: python sec_dashboard.py
+    - run: python render_html.py
     - run: |
         git config --global user.name 'GitHub Action'
         git config --global user.email 'action@github.com'
-        git add cybersecurity_data.json cache.json
-        git commit -m "Update cybersecurity JSON" || echo "No changes"
+        git add cybersecurity_data.json cache.json dashboard.html
+        git commit -m "Update cybersecurity JSON and dashboard HTML" || echo "No changes"
         git push
