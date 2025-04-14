@@ -2,7 +2,7 @@ import json
 
 def render_html():
     try:
-        with open('cybersecurity_data.json', 'r', encoding='utf-8') as f:
+        with open('intel/cybersecurity_data.json', 'r', encoding='utf-8') as f:
             data = json.load(f)
     except FileNotFoundError:
         print("Error: cybersecurity_data.json not found")
@@ -31,7 +31,18 @@ def render_html():
           text-align: center;
           color: #1a73e8;
           font-size: 2.5em;
-          margin-bottom: 30px;
+          margin-bottom: 10px;
+        }
+        .intro {
+          text-align: center;
+          color: #4a5568;
+          font-size: 1.2em;
+          max-width: 700px;
+          margin: 0 auto 40px;
+          line-height: 1.6;
+        }
+        .intro strong {
+          color: #1a73e8;
         }
         h2 {
           color: #2d3748;
@@ -86,12 +97,18 @@ def render_html():
           h2 {
             font-size: 1.5em;
           }
+          .intro {
+            font-size: 1em;
+          }
         }
       </style>
     </head>
     <body>
       <div class="container">
         <h1>HealthyByte Intelligence Dashboard</h1>
+        <div class="intro">
+          Welcome to your <strong>security command center</strong>! Dive into the latest news, tools, vulnerabilities, and events shaking up the security world. From sneaky malware to game-changing tech, it's got it all—<strong>updated weekly</strong> to keep you ahead of the curve. Stay sharp, stay secure!
+        </div>
     '''
     for category in ['Cybersecurity Business', 'Security Tools', 'Threats and Vulnerabilities', 'Cyber Events']:
         html += f'<h2>{category}</h2><ul>'
@@ -113,9 +130,9 @@ def render_html():
     </html>
     '''
 
-    with open('dashboard.html', 'w', encoding='utf-8') as f:
+    with open('intel/dashboard.html', 'w', encoding='utf-8') as f:
         f.write(html)
-    print("Generated dashboard.html")
+    print("Generated intel/dashboard.html")
 
 if __name__ == "__main__":
     render_html()
