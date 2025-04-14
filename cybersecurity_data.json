@@ -1,18 +1,11 @@
 {
-  "Security Product/Business News": [
+  "Cybersecurity Business": [
     {
       "source": "TechCrunch",
       "title": "UK founders grow frustrated over dearth of funding: ‘the problem is getting worse’",
       "link": "https://techcrunch.com/2025/04/13/uk-founders-grow-frustrated-over-dearth-of-funding-the-problem-is-getting-worse/",
       "summary": "According to Dealroom data cited by the Financial Times, British start-ups raised just £16.2 billion last year, far less than the more than £65 billio...",
       "published": "2025-04-13T23:43:48+00:00"
-    },
-    {
-      "source": "TechCrunch",
-      "title": "Apple reportedly working on a Vision Pro that plugs into your Mac",
-      "link": "https://techcrunch.com/2025/04/13/apple-reportedly-working-on-a-vision-pro-that-plugs-into-your-mac/",
-      "summary": "Apple isn’t giving up on its mixed reality headset the Vision Pro, according to Bloomberg’s Mark Gurman. The company has been debating the best direct...",
-      "published": "2025-04-13T20:29:21+00:00"
     },
     {
       "source": "Tripwire",
@@ -29,7 +22,7 @@
       "published": "2025-04-07T05:14:54+00:00"
     }
   ],
-  "Tools": [
+  "Security Tools": [
     {
       "source": "SANS ISC",
       "title": "Exploit Attempts for Recent Langflow AI Vulnerability (CVE-2025-3248), (Sat, Apr 12th)",
@@ -80,27 +73,27 @@
       "published": "2025-04-09T02:43:57-05:00"
     }
   ],
-  "Vulnerabilities/Threat Intel": [
+  "Threats and Vulnerabilities": [
     {
       "source": "CIRCL CVE",
       "title": "GHSA-p6jf-pv8c-623c",
       "link": "https://cve.circl.lu/cve/GHSA-p6jf-pv8c-623c",
       "summary": "",
-      "published": "2025-04-14T00:44:31.411671+00:00"
+      "published": "2025-04-14T00:54:50.691157+00:00"
     },
     {
       "source": "CIRCL CVE",
       "title": "GHSA-q29v-j9fh-q5jr",
       "link": "https://cve.circl.lu/cve/GHSA-q29v-j9fh-q5jr",
       "summary": "",
-      "published": "2025-04-14T00:44:31.408411+00:00"
+      "published": "2025-04-14T00:54:50.686853+00:00"
     },
     {
       "source": "CIRCL CVE",
       "title": "GHSA-vf3h-3qcv-6864",
       "link": "https://cve.circl.lu/cve/GHSA-vf3h-3qcv-6864",
       "summary": "",
-      "published": "2025-04-14T00:44:31.402020+00:00"
+      "published": "2025-04-14T00:54:50.681571+00:00"
     },
     {
       "source": "TechCrunch",
@@ -124,14 +117,14 @@
       "published": "2025-04-13T21:00:00+00:00"
     },
     {
-      "source": "Wired",
-      "title": "Homeland Security Email Tells a US Citizen to 'Immediately' Self-Deport",
-      "link": "https://www.wired.com/story/homeland-security-email-tells-a-us-citizen-to-immediately-self-deport/",
-      "summary": "An email sent by the Department of Homeland Security instructs people in the US on a temporary legal status to leave the country. But who the email ac...",
-      "published": "2025-04-13T01:35:06+00:00"
+      "source": "TechCrunch",
+      "title": "Apple reportedly working on a Vision Pro that plugs into your Mac",
+      "link": "https://techcrunch.com/2025/04/13/apple-reportedly-working-on-a-vision-pro-that-plugs-into-your-mac/",
+      "summary": "Apple isn’t giving up on its mixed reality headset the Vision Pro, according to Bloomberg’s Mark Gurman. The company has been debating the best direct...",
+      "published": "2025-04-13T20:29:21+00:00"
     }
   ],
-  "Security Events": [
+  "Cyber Events": [
     {
       "source": "Security Boulevard",
       "title": "BSidesLV24 – Breaking Ground – 14 Years Later, Proving Ground Is Proving Out. A Panel Discussion With PG Alumni And Staff",

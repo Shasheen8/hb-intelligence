@@ -34,19 +34,19 @@ API_ENDPOINTS = {
 }
 
 CATEGORIES = {
-    "Security Product/Business News": [
-        "product", "business", "enterprise", "solution", "vendor", "acquisition", "funding",
-        "partnership", "compliance", "regulation", "market", "industry"
+    "Cybersecurity Business": [
+        "acquisition", "funding", "partnership", "vendor", "enterprise", "compliance",
+        "regulation", "market", "industry", "business", "startup", "investment"
     ],
-    "Tools": [
-        "tool", "software", "framework", "script", "exploit", "scanner", "pentest",
-        "automation", "open-source", "github", "repository"
+    "Security Tools": [
+        "tool", "software", "framework", "script", "scanner", "pentest", "automation",
+        "open-source", "github", "repository", "exploit"
     ],
-    "Vulnerabilities/Threat Intel": [
-        "vulnerability", "cve", "exploit", "malware", "ransomware", "phishing", "threat",
-        "attack", "breach", "zero-day", "ioc", "intelligence", "patch"
+    "Threats and Vulnerabilities": [
+        "vulnerability", "cve", "malware", "ransomware", "phishing", "threat", "attack",
+        "breach", "zero-day", "ioc", "patch"
     ],
-    "Security Events": [
+    "Cyber Events": [
         "conference", "summit", "hackathon", "webinar", "event", "meetup", "workshop",
         "defcon", "blackhat", "rsac", "training"
     ]
@@ -55,7 +55,7 @@ CATEGORIES = {
 CACHE_FILE = "cache.json"
 OUTPUT_JSON = "cybersecurity_data.json"
 MAX_ITEMS_PER_CATEGORY = 7
-MAX_ITEMS_PER_FEED = 3  # Limit per feed for diversity
+MAX_ITEMS_PER_FEED = 3
 
 # Timezone mapping
 TZINFOS = {
@@ -99,12 +99,21 @@ def is_duplicate(new_title: str, existing_titles: List[str], threshold: float = 
     return False
 
 def categorize_item(title: str, summary: str) -> List[str]:
-    categories = []
+    """Categorize item with ordered precedence."""
     text = (title.lower() + " " + summary.lower()).replace("\n", " ")
-    for category, keywords in CATEGORIES.items():
+    categories = []
+    
+    # Check categories in order for specificity
+    for category, keywords in [
+        ("Cybersecurity Business", CATEGORIES["Cybersecurity Business"]),
+        ("Security Tools", CATEGORIES["Security Tools"]),
+        ("Threats and Vulnerabilities", CATEGORIES["Threats and Vulnerabilities"]),
+        ("Cyber Events", CATEGORIES["Cyber Events"])
+    ]:
         if any(keyword in text for keyword in keywords):
             categories.append(category)
-    return categories or ["Vulnerabilities/Threat Intel"]
+    
+    return categories or ["Threats and Vulnerabilities"]
 
 def parse_date(date_str: str) -> datetime:
     """Parse date formats, ensuring offset-aware datetime."""
@@ -113,8 +122,7 @@ def parse_date(date_str: str) -> datetime:
         if parsed.tzinfo is None:
             parsed = parsed.replace(tzinfo=pytz.UTC)
         return parsed
-    except (ValueError, TypeError):
-        # Fallback to current time if parsing fails
+    except Exception:
         return datetime.now(tz=pytz.UTC)
 
 def fetch_rss_feed(feed_name: str, url: str, cache: Dict, seen_titles: List[str]) -> List[Dict]:
@@ -178,9 +186,9 @@ def fetch_api_data(api_name: str, config: Dict, cache: Dict, seen_titles: List[s
         
         items = []
         cutoff_date = datetime.now(tz=pytz.UTC) - timedelta(days=7)
+        api_item_count = 0
         
         if api_name == "CIRCL CVE":
-            api_item_count = 0
             for cve in data:
                 if api_item_count >= MAX_ITEMS_PER_FEED:
                     break
@@ -226,10 +234,10 @@ def update_dashboard():
     cache = load_cache()
     
     output = {
-        "Security Product/Business News": [],
-        "Tools": [],
-        "Vulnerabilities/Threat Intel": [],
-        "Security Events": []
+        "Cybersecurity Business": [],
+        "Security Tools": [],
+        "Threats and Vulnerabilities": [],
+        "Cyber Events": []
     }
     
     all_items = []
@@ -265,7 +273,7 @@ def update_dashboard():
     cache["last_run"] = datetime.now(tz=pytz.UTC).isoformat()
     save_cache(cache)
     
-    print(f"Data saved to {OUTPUT_JSON} and cache updated successfully. 😊")
+    print(f"Data saved to {OUTPUT_JSON}")
 
 if __name__ == "__main__":
     update_dashboard()
