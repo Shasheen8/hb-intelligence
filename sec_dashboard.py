@@ -122,7 +122,8 @@ def parse_date(date_str: str) -> datetime:
         if parsed.tzinfo is None:
             parsed = parsed.replace(tzinfo=pytz.UTC)
         return parsed
-    except Exception:
+    except (ValueError, TypeError):
+        # Fallback to current time if parsing fails
         return datetime.now(tz=pytz.UTC)
 
 def fetch_rss_feed(feed_name: str, url: str, cache: Dict, seen_titles: List[str]) -> List[Dict]:
@@ -273,7 +274,10 @@ def update_dashboard():
     cache["last_run"] = datetime.now(tz=pytz.UTC).isoformat()
     save_cache(cache)
     
-    print(f"Data saved to {OUTPUT_JSON}")
+    print(f"Data saved to {OUTPUT_JSON} and cache updated successfully.")
+    print("Dashboard update completed. 😊 Check the output JSON file for results.")
+    print(f"Last run: {cache['last_run']}")
+    print(f"Total items fetched: {len(all_items)}")
 
 if __name__ == "__main__":
     update_dashboard()
