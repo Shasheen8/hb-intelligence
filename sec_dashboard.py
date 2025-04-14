@@ -113,7 +113,8 @@ def parse_date(date_str: str) -> datetime:
         if parsed.tzinfo is None:
             parsed = parsed.replace(tzinfo=pytz.UTC)
         return parsed
-    except Exception:
+    except (ValueError, TypeError):
+        # Fallback to current time if parsing fails
         return datetime.now(tz=pytz.UTC)
 
 def fetch_rss_feed(feed_name: str, url: str, cache: Dict, seen_titles: List[str]) -> List[Dict]:
