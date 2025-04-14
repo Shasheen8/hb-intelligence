@@ -23,7 +23,7 @@ This repository contains the Python script to generate the dashboard data, the o
 
 The repository contains the following files:
 
-- **`cybersecurity_dashboard.py`**:
+- **`sec_dashboard.py`**:
   - Python script to fetch, deduplicate, categorize, and generate dashboard data.
   - Dependencies: `feedparser`, `requests`, `python-dateutil`, `pytz`.
   - Outputs: `cybersecurity_data.json`, `cache.json`.
@@ -50,7 +50,7 @@ The repository contains the following files:
     }
 
 - **`cache.json`**:
-Tracks processed item IDs (URLs or CVE IDs) and the last run timestamp to avoid duplicates across runs. Generated and updated by `cybersecurity_dashboard.py`.
+Tracks processed item IDs (URLs or CVE IDs) and the last run timestamp to avoid duplicates across runs. Generated and updated by `sec_dashboard.py`.
 
 **Example:**
 ```json
@@ -98,14 +98,14 @@ pip install feedparser requests python-dateutil pytz
 
 ### Run the Script
 ```bash
-python cybersecurity_dashboard.py
+python sec_dashboard.py
 ```
 - Generates `cybersecurity_data.json` and `cache.json` in the root.
 - Updates `cache.json` with new item IDs and timestamp.
 
 ### Push Files to GitHub
 ```bash
-git add cybersecurity_data.json cache.json cybersecurity_dashboard.py .github/workflows/update-json.yml
+git add cybersecurity_data.json cache.json sec_dashboard.py .github/workflows/update-json.yml
 git commit -m "Add dashboard files"
 git push origin main
 ```
@@ -126,7 +126,7 @@ git push origin main
 
 ### Actions Performed
 - Installs Python and dependencies
-- Runs `cybersecurity_dashboard.py`
+- Runs `sec_dashboard.py`
 - Commits updated `cybersecurity_data.json` and `cache.json`
 
 ### Manual Trigger
@@ -193,7 +193,7 @@ const categories = [
 ## Customization
 
 ### Add Feeds
-Edit `RSS_FEEDS` in `cybersecurity_dashboard.py`:
+Edit `RSS_FEEDS` in `sec_dashboard.py`:
 ```python
 RSS_FEEDS["New Feed"] = "https://newfeed.com/rss"
 ```
@@ -213,7 +213,7 @@ Adjust threshold in `is_duplicate()` (default: `0.9`).
 
 ### After changes
 ```bash
-python cybersecurity_dashboard.py
+python sec_dashboard.py
 git add .
 git commit -m "Update dashboard configuration"
 git push origin main
@@ -235,7 +235,7 @@ git push origin main
 
 ### Miscategorized Items
 - Check `cybersecurity_data.json`
-- Refine `CATEGORIES` keywords in `cybersecurity_dashboard.py`
+- Refine `CATEGORIES` keywords in `sec_dashboard.py`
 
 ### Actions Failure
 - View logs under GitHub **Actions**
